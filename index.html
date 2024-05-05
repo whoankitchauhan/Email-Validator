@@ -1,53 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EmailGuard - Your Trusted Email Validator</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
     <header>
-      <nav>
-        <div class="logo">
-          <img src="img/email.svg" alt="email svg" />
-          <span>EmailGuard</span>
-        </div>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </nav>
+        <nav>
+            <div class="logo">
+                <img src="img/email.svg" alt="email svg">
+                <span>EmailGuard</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-      <div class="container">
-        <h1>Protect your inbox with EmailGuard</h1>
-        <form id="emailForm" action="/submit" method="post">
-          <input
-            placeholder="Enter your email to validate"
-            type="email"
-            id="username"
-            name="username"
-            required
-          />
-          <br /><br />
-          <button id="submitBtn" class="btn" type="submit">
-            Validate Email
-          </button>
-        </form>
-      </div>
+        <div class="container">
+            <h1>Protect your inbox with EmailGuard</h1>
+            <form id="emailForm" action="/submit" method="post">
+                <input placeholder="Enter your email to validate" type="email" id="username" name="username" required>
+                <br /><br />
+                <button id="submitBtn" class="btn" type="submit">Validate Email</button>
+            </form>
+        </div>
 
-      <div class="container">
-        <h2>Validation Results</h2>
-        <div id="resultCont">Your validation results will appear here</div>
-      </div>
+        <div class="container">
+            <h2>Validation Results</h2>
+            <div id="resultCont">Your validation results will appear here</div>
+        </div>
     </main>
-    <footer>&copy; EmailGuard | All Rights reserved</footer>
+    <footer>&copy; EmailGuard | All Rights Reserved</footer>
     <script src="js/index.js"></script>
-  </body>
+</body>
 </html>
