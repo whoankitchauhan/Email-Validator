@@ -1,45 +1,53 @@
-console.log("This is my script")
+console.log("This is my script");
 
-let result = {
-    "tag": "",
-    "free": false,
-    "role": false,
-    "user": "akshaykumar",
-    "email": "akshaykumar@codewithharry.com",
-    "score": 0.64,
-    "state": "undeliverable",
-    "domain": "codewithharry.com",
-    "reason": "invalid_mailbox",
-    "mx_found": true,
-    "catch_all": null,
-    "disposable": false,
-    "smtp_check": false,
-    "did_you_mean": "",
-    "format_valid": true
-}
-
-
+const emailForm = document.getElementById("emailForm");
+const submitBtn = document.getElementById("submitBtn");
+const resultCont = document.getElementById("resultCont");
 
 submitBtn.addEventListener("click", async (e) => {
-    e.preventDefault()
-    console.log("Clicked!")
-    resultCont.innerHTML = `<img width="123" src="img/loading.svg" alt="">`
-    let key = "ema_live_ITkV5Pqq40WNdMLdjqMZlNcb4AEBrNvWiSFd1MYE"
-    let email = document.getElementById("username").value 
-    let url = `https://api.emailvalidation.io/v1/info?apikey=${key}&email=${email}`
-    let res = await fetch(url)
-    let result = await res.json()
-    let str = ``
-    for (key of Object.keys(result)) {
-        if(result[key] !== "" && result[key]!== " "){ 
-            str = str + `<div>${key}: ${result[key]}</div>`
-        }
-    }
-
-    console.log(str)
-    resultCont.innerHTML = str
-})
-
-
-
-
+  e.preventDefault();
+  console.log("Clicked!");
+  resultCont.innerHTML = `<img src="img/loading.svg" alt="Loading...">`;
+  const key = "ema_live_BfQA2ddTOP5kcATovqOFqQB5X6fx6J6XaNq4dpZQ";
+  const email = document.getElementById("username").value;
+  const url = `https://api.emailvalidation.io/v1/info?apikey=${key}&email=${email}`;
+  try {
+    const res = await fetch(url);
+    const result = await res.json();
+    let str = ``;
+    str += `<div><strong>Email Address:</strong> ${email}</div>`;
+    str += `<div><strong>Username:</strong> ${result.user}</div>`;
+    str += `<div><strong>Domain:</strong> ${result.domain}</div>`;
+    str += `<div><strong>Email Sending Status:</strong> ${
+      result.smtp_check ? "Able to send" : "Unable to send"
+    }</div>`;
+    str += `<div><strong>Mail Server Found:</strong> ${
+      result.mx_found ? "Yes" : "No"
+    }</div>`;
+    str += `<div><strong>Role Email:</strong> ${
+      result.role ? "Yes" : "No"
+    }</div>`;
+    str += `<div><strong>Disposable Email:</strong> ${
+      result.disposable ? "Yes" : "No"
+    }</div>`;
+    str += `<div><strong>Validation Score:</strong> ${result.score}</div>`;
+    str += `<div><strong>Email Delivery Status:</strong> ${result.state}</div>`;
+    str += `<div><strong>Reason for Undeliverable:</strong> ${result.reason}</div>`;
+    str += `<div><strong>Free Email Service:</strong> ${
+      result.free ? "Yes" : "No"
+    }</div>`;
+    str += `<div><strong>Email Format Valid:</strong> ${
+      result.format_valid ? "Yes" : "No"
+    }</div>`;
+    str += `<div><strong>Catch-All Email:</strong> ${
+      result.catch_all === null
+        ? "Not determined"
+        : result.catch_all
+        ? "Yes"
+        : "No"
+    }</div>`;
+    resultCont.innerHTML = str;
+  } catch (error) {
+    resultCont.innerHTML = `<div>Error: ${error.message}</div>`;
+  }
+});
