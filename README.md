@@ -14,8 +14,8 @@ EmailGuard is a simple web application that allows you to validate email address
 To use EmailGuard, follow these simple steps:
 
 1. Clone this repository to your local machine:
-
-git clone https://github.com/whoankitchauhan/Email-Validator.git
+```
+git clone https://github.com/whoankitchauhan/Email-Validator.git ```
 
 2. Navigate to the project directory:
 
